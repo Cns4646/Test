@@ -29,7 +29,7 @@ phones.forEach((phoneNumber) => {
       };
       ws.send(JSON.stringify(message));
       console.log(`[${phoneNumber}] Sent ${++count}: ${randomText}`);
-    }, 300);
+    }, 1000);
   });
 
   ws.on("message", (data) => {
