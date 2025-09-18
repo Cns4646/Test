@@ -1,0 +1,24 @@
+name: WebSocket Bot
+
+on:
+  workflow_dispatch:   # ကိုယ်တိုက်ရိုက် Run ခေါ်ချင်ရင်
+  schedule:
+    - cron: "0 * * * *"   # နာရီတိုင်း run (UTC time)
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install ws
+
+      - name: Run Script
+        run: node index.js
